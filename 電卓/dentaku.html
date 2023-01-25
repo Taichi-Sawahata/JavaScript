@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dentaku</title>
+    <link rel="stylesheet" href="dentaku.css">
+</head>
+<body>
+<form name="dentaku">
+    
+    <table>
+    <tr>
+        <td colspan="4">
+            <input type="text" class="display" name="display" readonly>
+        </td>
+    </tr>
+        <!--789+÷-->
+   <div>
+       <tr>
+        <td><input type="button"  class="int" value="7" onclick="get_calc(this)"></td>
+        <td><input type="button"  class="int" value="8" onclick="get_calc(this)"></td>
+        <td><input type="button"  class="int" value="9" onclick="get_calc(this)"></td>
+        <td><input type="button" value="÷" onclick="get_calc(this)" class="operator" name="div_btn"></td>
+       </tr>
+   </div>
+   <div>
+       <tr> 
+        <td><input type="button"  class="int" value="4" onclick="get_calc(this)"></td>
+        <td><input type="button"  class="int" value="5" onclick="get_calc(this)"></td>
+        <td><input type="button"  class="int" value="6" onclick="get_calc(this)"></td>
+        <td><input type="button" value="×" onclick="get_calc(this)" class="operator" name="multi_btn"></td>
+       </tr>
+   </div>
+   <div>
+       <tr>
+        <td><input type="button" class="int" value="1" onclick="get_calc(this)"></td>
+        <td><input type="button"  class="int" value="2" onclick="get_calc(this)"></td>
+        <td><input type="button"  class="int" value="3" onclick="get_calc(this)"></td>
+        <td><input type="button" value="-" onclick="get_calc(this)" class="operator" class="div_btn"></td>
+       </tr>
+   </div>
+   <div>
+    <tr>
+        <td><input type="button"  class="int" value="0" onclick="get_calc(this)"></td>
+        <td><input type="button" value="C" class="operator" onclick="get_calc(this)"></td>
+        <td><input type="button" value="="  class="equal" onclick="get_calc(this)"></td>
+        <td><input type="button" value="+" class="operator" onclick="get_calc(this)"></td>
+    </tr>
+   </div>
+    <!--イベントハンドラをの仮引数に0を置くことで、押されたボタンを認識してくれる-->
+</form>
+</table>
+<script>
+    //eval関数 元々javascriptに備わっている関数
+    //引数に与えられた文字列の評価・実行(計算)してくれる
+    //仮引数btnを用意、ここに押されたボタンのvalueをいれていく
+    function get_calc(btn){
+        if(btn.value == "="){
+        document.dentaku.display.value = eval(document.dentaku.display.value);
+        }else if(btn.value == "C"){
+            document.dentaku.display.value = "";
+        }else{
+            if(btn.value == "×"){
+                btn.value = "*";
+            }else if(btn.value == "÷"){
+                btn.value = "/";
+            }
+            //+= 結合代入演算子
+            document.dentaku.display.value += btn.value;
+            document.dentaku.multi_btn.value = "×";
+            document.dentaku.div_btn.value = "÷";
+        }
+    }
+</script>
+</body>
+</html>

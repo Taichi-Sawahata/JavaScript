@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カップ麺タイマー</title>
+</head>
+<body>
+    <h1 id="time">経過時間</h1>
+    <input type="text" id="sec">
+    <button id="start">開始</button>
+    <audio src="Happier.mp3" id="sound"></audio>
+    <script>
+        'use strict';
+        const time = document.getElementById('time');
+        let sec = document.getElementById('sec');
+        const start = document.getElementById('start');
+        const sound = document.getElementById('sound');
+        let count = 0;
+
+        start.onclick = function(){
+            //開始ボタンをクリックしたら、1秒毎にカウント開始
+            const set_id = setInterval(function(){
+                count++;
+                time.innerHTML = count;
+//countと入力値がイコールになったとき、音楽再生＆カウントクリア
+                if(count==sec.value){
+                    sound.play();
+                    clearInterval(set_id);
+                }
+            },1000);
+        }
+    </script>
+</body>
+</html>
+

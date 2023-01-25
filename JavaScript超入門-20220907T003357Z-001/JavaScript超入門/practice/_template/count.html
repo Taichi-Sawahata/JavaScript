@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let i = 10;
+        function timer(){
+            if(i >= 0){
+                document.getElementById('count').innerHTML = i;
+                i--;
+                setTimeout('timer()', 500);
+            }else{
+                let end = document.getElementById('end');
+                end.textContent = 'タイムアップ';
+            }
+        }
+
+    </script>
+</head>
+<body>
+ <button onclick="timer();">スターと</button>
+ <p id="count"></p>
+ <p id="end"></p>
+</body>
+</html>

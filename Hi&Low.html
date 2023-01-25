@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let card = 1;//場にあるカードの初期化番号
+        let hi_l = 0;//Low(0)とHigh(1)どっちを選んだか仮の数字(実際にはクリックで決める)
+        let result = '〇〇を選んで、あなたの〇〇';//勝ち負けの結果の初期値
+
+        function high_low(hi_l){
+            document.getElementById('card_img_before').src = 's_'+ card + '.jpg';
+       // let trump = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];//ハイアンドローをするカード番号
+        let trump_n = Math.floor(Math.random()* 13)+1;//ランダムで数字を決める
+ 
+        //追加した判定のプログラム
+        if(card < trump_n){//賭けカードが伏せカードより大きい場合
+          if(hi_l === 0){result='.lowを選んで、<span id="b">あなたの負け</span>';}//0は低いを選んだ場合
+          if(hi_l === 1){result='.highを選んで、<span id="r">あなたの勝ち</span>';}//1は高いを選んだ場合
+        }
+        else if(card > trump_n){//賭けカードが伏せカードより小さい場合
+            if(hi_l === 0){result='.lowを選んで、<span id="r">あなたの勝ち</span>';}
+            if(hi_l === 1){result='.highを選んで、<span id="b">あなたの負け</span>';}
+            }
+            else{result='引き分け!!';}
+
+            document.getElementById('card_img_after').src = 's_' + trump_n + '.jpg'
+        
+        document.getElementById('before').innerHTML = '場にあるカードは' + trump_n;
+        document.getElementById('after').innerHTML = '伏せカードは' + trump_n + result + '<br/>次のカードが今の数字より高いか低いか考えてみよう!';
+        
+        card = trump_n;//場にあるカードを新しく引いたカードに変える
+    }
+    </script>
+    <style>
+        #r {
+            background-color: red;
+        }
+
+        #b {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <img src="s_1.jpg" id="card_img_before" width="100" height="150" text-align="left">
+
+    <img src="s_0.jpg" id="card_img_after" width="100" height="150">
+    <p id="before">場にあるカードは１</p>
+    <p id="after">次のカードは場にあるカードより高いか低いか考えてみよう!</p>
+    <input type="button" value="High" onClick="high_low(1);">
+    <input type="button" value="Low" onClick="high_low(0);">
+    
+
+</body>
+</html>

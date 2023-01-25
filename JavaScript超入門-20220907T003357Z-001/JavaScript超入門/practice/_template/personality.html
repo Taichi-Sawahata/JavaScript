@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function answer(){
+            let q = document.getElementById('q');
+            let a = Number(q.q1.value) + Number(q.q2.value) + 
+            Number(q.q3.value) + Number(q.q4.value);
+
+            let text;
+
+            if(a >= 9){
+                text = '陽キャ';
+            }else if(a >= 4 && a <= 8){
+                text = 'ふつう';
+            }else {
+                text = '陰キャ';
+            }
+            event.preventDefault();
+            document.getElementById('conclu').innerHTML= text;
+        }
+
+    </script>
+</head>
+<body>
+    <form action="#" id="q">
+        <h1>性格診断</h1>
+        <p>どんな味が好き?<br>
+        <input type="radio" name="q1" value="1">辛い
+        <input type="radio" name="q1" value="2">甘い
+        <input type="radio" name="q1" value="3">酸っぱい
+        </p>
+        <p>インドア・アウトドア？<br>
+        <input type="radio" name="q2" value="1">インドア
+        <input type="radio" name="q2" value="2">アウトドア
+        <input type="radio" name="q2" value="3">どちらでもない
+        </p>
+        <p>計画は立てる？<br>
+        <input type="radio" name="q3" value="1">ぜんぜん
+        <input type="radio" name="q3" value="2">みっちり
+        <input type="radio" name="q3" value="3">どちらでもない
+        </p>
+        <p>ケンカしたら謝る?<br>
+        <input type="radio" name="q4" value="1">謝る
+        <input type="radio" name="q4" value="2">ぜんぜん
+        <input type="radio" name="q4" value="3">どちらでもない
+        </p>
+
+        <button onclick="answer();">性格診断！</button>
+        <div id="conclu">押してください</div>
+        
+    </form>
+</body>
+</html>

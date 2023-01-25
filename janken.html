@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script>
+        //functionの関数名をclickにしても使えない、おそらく予約語
+        //Mathオブジェクトのrandomメソッド直後に()をつけるのを忘れないようにする
+        'use strict'; 
+        function Click(propo){
+            let janken = ['グー','チョキ','パー'];
+            let player = ['グー','チョキ','パー'];
+            let p_propo = Math.floor(Math.random()* 3);
+
+            //変数を用意
+            //条件分岐の値を代入する
+            //じゃんけんはあいこをその他として共通にできる
+            let result;
+            if(propo===0 && p_propo===1 ){
+                result = '勝利';
+            }else if(propo===0 && p_propo===2){
+                result = '敗北';
+            }else if(propo===1 && p_propo===2){
+                result = '勝利';
+            } else if(propo===1 && p_propo===0){
+                result = '敗北';
+            }else if(propo===2 && p_propo===0){
+                result = '勝利';
+            }else if(propo===2 && p_propo===1){
+                result = '敗北';
+            }else{
+                result = 'あいこ';
+            }
+
+        //プレイヤー側が選んだ数字の画像を表示
+            document.getElementById('ja').src = 'jan'+propo+'.png';
+        //相手側のランダムにでた数字の画像を表示
+        //元々display:none;にしていたものなので、display:block;に変更
+            let img = document.getElementById('ja2');
+            img.src= 'jan'+ p_propo +'.png';
+            img.style.display = 'block';
+
+            document.getElementById('janken1').innerHTML = janken[propo] + 'さあ、結果はどうなったでしょうか?!';
+            document.getElementById('janken2').innerHTML = '相手は'+player[p_propo] +result;
+        
+        }
+</script>        
+</head>
+<body>
+    <p><img src="jan-1024x1024.png" width="100" height="100" id="ja"></p> 
+    <button onclick="Click(0)">グー</button>
+    <button onclick="Click(1)">チョキ</button>
+    <button onclick="Click(2)">パー</button>
+    <p><img src="jan1.png" width="100" height="100" style="display:none" id="ja2"></p>
+    <div id="janken1"></div>
+    <div id="janken2"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+   function day(){
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let day = now.getDate();
+    document.getElementById('day').textContent = 
+    year + '年' + month + '月' + day + '日' + '---';
+   }
+
+   function time(){
+    let now = new Date();
+    let hour = now.getHours();
+    let min = now.getMinutes();
+    let sec = now.getSeconds();
+    let ampm = '';
+    if(hour < 12){
+        ampm = 'am';
+    }else{
+        ampm = 'pm';
+    }  
+    document.getElementById('time').textContent = 
+    hour % 12 + '時' + min + '分' + sec + '秒' + ampm;
+
+   }
+   
+   setInterval('time()',1000);
+   
+</script>
+<body onload="day();time();">
+時刻:
+<span id="day"></span><span id="time"></span>
+    
+</body>
+</html>

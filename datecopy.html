@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" id="checkin">
+    <input type="date" id="checkout">
+    <script>
+        'use strict';
+        window.onload = function(){
+            function next_cal(){
+              let change_day = document.getElementById('checkin').value;
+              let array = change_day.split('-');
+              let next_day = new Date(
+                 array[0],
+                 Number(array[1]),
+                 Number(array[2]+1)
+              );
+              let year = next_day.getFullYear();
+              let month = next_day.getMonth();
+              let date = next_day.getDate();
+
+             if(month <10){
+                month = '0'+month;
+             }
+             if(date < 10){
+                date = '0'+date;
+             }
+
+             let tommorow = year + '-' + month + '-' + date;
+             document.getElementById('checkout').value = 'tommorow';
+            }
+            document.getElementById('checkin').onchange = function(){
+                next_cal();
+            }
+        }
+    </script>
+</body>
+</html>

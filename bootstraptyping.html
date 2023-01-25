@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キータイピング トレーニングkit</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <title>Document</title>
+</head>
+<body>
+
+<div class="container bg-light gy-3 text-dark">
+    <div class="row justify-content-md-center m-3 border border-warning border-2 shadow-lg">
+        <h1 class="col-6 fs-1 gy-4 text-center">キータイピング トレーニングkit</h1>
+        <!-- スタートボタン＆ファイル選択 -->
+        <div class="row gy-2">
+            <div class="d-grid gap-2 col-6 mx-auto p-3 border-bottom border-seconds border-2 gy-2">
+                <input type="file" id="file" class="form-control"><br>
+                <button id="start" class="btn btn-primary">スタート</button>
+            </div>
+        </div>
+        <!-- 表示 -->
+        <div class="row gy-4">
+            <div class=" col-6 mx-auto text-center">
+                <label for="staticEmail" class="col-md-2 col-form-label fs-3">表示</label>
+                <input type="text" id="output_text" class="form-control" readonly disabled>
+            </div>
+        </div>
+        <!-- 入力 -->
+        <div class="row gy-2">
+            <div class=" col-6 mx-auto text-center">
+                <label for="staticEmail" class="col-md-2 col-form-label fs-3">入力</label>
+                <input type="text" id="input_text" class="form-control">
+            </div>
+         </div>        
+         <!-- Total値 -->
+         <div class="row mb-3 gy-4 fs-3">
+            <div class="col-6 mx-auto text-center">
+                <span id="total">0</span>点
+            </div>
+         </div>
+    </div>
+</div>
+
+
+
+<script>
+//グローバル変数
+const G = {
+    read_file : document.getElementById('file'),
+    output_text : document.getElementById('output_text'),
+    input_text : document.getElementById('input_text'),
+    start : document.getElementById('start'),
+    total : document.getElementById('total'),
+    texts : [],
+    score : 0
+}
+
+//ファイルを読み込んだら実行
+function readFile(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(){
+    G.texts = reader.result.split("\n");
+  };
+  reader.readAsText(file);
+}
+
+//シャッフルテキスト処理
+function shuffleText(){
+    G.input_text.value="";
+    const r = Math.floor( Math.random()* G.texts.length );
+    // console.log(G.texts[r]);
+    G.output_text.value = G.texts[r];
+}
+
+//キーダウン処理
+function keyEvent(e){
+    //console.log(e.key);
+    if(G.output_text.value===G.input_text.value){
+        shuffleText();
+        G.score++;
+        G.total.textContent=G.score; 
+    }
+}
+
+//イベントと関数の紐づけ
+G.start.onclick = shuffleText;
+G.read_file.onchange = readFile;
+G.input_text.onkeydown = keyEvent;
+
+</script>
+</body>
+</html>

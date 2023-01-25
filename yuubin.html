@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵便番号</title>
+    <style>
+        th,td{
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h2>サーバーからtext_data.txtを読み込んで、要素内容としてセット</h2>
+            <h1>郵便番号と住所一覧を表示</h1>
+            <h2>text_data.txtの読み込み</h2>
+            <p>郵便番号で検索: <input type="text" name="search_zipcode" id="search_zipcode" placeholder="ハイフンなし、半角で入力" maxlength="7">
+             <input type="button" id="search_button" value="検索ボタン"><br>
+                住所: <input type="text" id="hit_address" size="40" readonly></p>
+                <table class="list_area">
+                    <caption>福岡県 郵便番号-住所 一覧</caption>
+                    <tr>
+                        <thead>
+                        <th>郵便番号</th>
+                        <th>都道府県</th>
+                        <th>住所1</th>
+                        <th>住所2</th>
+                    </thead>
+                  </tr>
+                 
+                </table>
+        </div>
+    </header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        'use strict';
+        //DOMを読み込んでから実行
+        $(function(){
+    //data_arrayを初期化、ここに値を追加していける
+let data_array;
+//ajax読み込み
+$.ajax({url:'text_data.txt',dataType:"text"})
+//関数が実行された場合
+.done(function(data){
+    //dataを行ごとの配列に変換、
+    data_array = data.split(/\r\n|\r|\n/);
+    //data_arrayから要素ごと(1行ごと)に取り出し
+    for(let item of data_array){
+        //1行分をカンマで分割して配列にする
+       let line_array = item.split(",");
+       //分割したものをテンプレート文字列に
+        let tr_text = `<tr>
+                       <td>${line_array[0]}</td>
+                       <td>${line_array[1]}</td>
+                       <td>${line_array[2]}</td>
+                       <td>${line_array[3]}</td>
+                       </tr>`;
+                       //window.alert(tr_text);
+    //.list_areaの一番後ろに追加
+    $(".list_area").append(tr_text);
+    }
+})
+.fail(function(){
+     window.alert("読み込みエラー");
+})
+//検索ボタンがクリックされた場合
+$("#search_button").on("click",function(){
+    //window.alert("検索ボタンがクリックされた");
+    //入力チェック
+    //検索チェック
+    let w_zipcode = $("#search_zipcode").val();
+    //検索ヒットフラグの初期値0
+    let hit_flag = 0;
+    //入力された値が7文字だったら
+  if(w_zipcode.length === 7){
+    //window.alert("桁数OK");
+    //入力された郵便番号を検索
+    for(let item of data_array){
+        //変数itemの中のw_zipcodeを検索した時に戻り値が-1の値でなければ、以下を実行
+        if(item.indexOf(w_zipcode)!= -1){
+            //itemの行をカンマごとに分けて配列に格納
+            let line_array = item.split(",");
+            //readonlyの住所欄にインデックス番号123を入力
+          $("#hit_address").val(line_array[1]+line_array[2]+line_array[3]);
+          //hit_flagを1に変更
+          hit_flag =1;
+          //ループ処理を抜ける
+          break;
+        }
+    }
+    //indexofの値が-1で、ヒットフラグの値が増えなかった場合
+    if(hit_flag === 0){
+        //readonlyのvalueに以下の文字列を代入
+        $("#hit_address").val("該当データがありません");
+        //console.log(line_array);
+    }
+  }else{
+    window.alert("桁数が不足");
+  }
+})
+});
+    </script>
+</body>
+</html>

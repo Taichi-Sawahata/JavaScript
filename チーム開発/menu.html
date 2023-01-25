@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <button type="button" class="menu-btn" id="menu-btn">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div id="menu">
+      <div class="menu__item">部屋名変更</div>
+      <div class="menu__item">ユーザ管理</div>
+      <div class="menu__item">名前変更</div>
+      <div class="menu__item">ログアウト</div>
+    </div>
+    <script>
+//         $(function(){
+//   $('.menu-btn').on('click', function(){
+//     $('.menu').toggleClass('is-active');
+//   });
+// }());
+    
+   const menu_btn = document.getElementById('menu-btn');
+   const menu = document.getElementById('menu');
+   menu_btn.addEventListener('click',()=>{
+    menu.classList.toggle('menu');
+   })
+  
+
+     </script>
+  </body>
+</html>

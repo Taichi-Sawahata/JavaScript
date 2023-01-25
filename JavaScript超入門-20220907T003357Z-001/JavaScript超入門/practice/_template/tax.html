@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>テンプレート</title>
+<link href="../../_common/images/favicon.ico" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="container">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+    <table>
+        <tr>
+            <td id="title"></td>
+            <td id="price"></td>
+            <td id="stock"></td>
+        </tr>
+    </table>
+    <input type="button" value="税込価格計算" ondblclick="kannji();">
+    <p id="output" ></p>
+</section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript Samples</p>
+</div><!-- /.container -->
+</footer>
+
+</div>
+<script>
+ 'use strict';
+function total(price){
+    const tax = 0.1;
+    let zeikomi = price + price * tax;
+    return zeikomi;
+}
+
+console.log('東京で遊ぶには', total(40000), '円必要です');
+document.getElementById('output').textContent = '東京で遊ぶには' + total(40000) + '円必要です';
+
+//価格設定
+let price = 8000;
+const tax = 0.2;
+let zeikomi = price + price * tax;
+window.alert(zeikomi , '円');
+
+function kannji(){
+    window.alert('hello');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>テンプレート</title>
+<link href="../../_common/images/favicon.ico" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="../../5-03_cookie/step2/panel.css">
+<style>
+    section img {
+        max-width: 100%;
+     }
+
+     section .wrapper {
+        margin: 0 auto;
+        max-width: 90%;
+        width: 500px;
+     }
+
+     section ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+     }
+
+     section li {
+        flex: 1 1 auto;
+        margin-right: 8px;
+     }
+
+     li:last-of-type {
+        margin-right: 0;
+     }
+
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+   <div class="wrapper">
+    <div><img src="../../5-04_image/step1/img1.jpg" alt="" id="bigimg"></div>
+
+    
+        <ul>
+            <img src="../../5-04_image/step1/thumb-img1.jpg" alt="" class="thumb">
+            <img src="../../5-04_image/step1/thumb-img2.jpg" alt="" class="thumb">
+            <img src="../../5-04_image/step1/thumb-img3.jpg" alt="" class="thumb">
+            <img src="../../5-04_image/step1/thumb-img4.jpg" alt="" class="thumb">
+        </ul>
+    
+   </div>
+</section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript Samples</p>
+</div><!-- /.container -->
+</footer>
+<script>
+ 'use strict';
+ const thumbs = document.querySelectorAll('.thumb');
+ thumbs.forEach(function(item , index){
+    item.onclick = function() {
+       document.getElementById('bigimg').src = this.dataset.image;
+    }
+ });
+
+</script>
+</body>
+</html>

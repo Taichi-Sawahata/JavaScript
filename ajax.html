@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoogleBooksAPI Ajax</title>
+    <style>
+        td{
+            border: 1px solid #ccc;
+        }
+        td:nth-child(1){
+            width: 300px;
+            font-weight: bold;
+            background-color: yellowgreen;
+        }
+        td:nth-child(2){
+            width: 100px;
+            background-color: #ccc;
+        }
+        td:nth-child(3){
+            width: 100px;
+            background-color: #ccc;
+        }
+        td:nth-child(4){
+            width: 1000px;
+            background-color: #ccc;
+        }
+        td:nth-child(5){
+            width: 120px;
+            background-color: #ccc;
+        }
+        .wrapper{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1{
+            margin-bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+    <h1>Book検索</h1>
+    <div>
+        <input type="text" id="key">
+        <button id="send">検索</button>
+    </div>
+    <div>
+        <table id="list">
+            <td>書籍名</td>
+            <td>著者</td>
+            <td>出版社</td>
+            <td>概要</td>
+            <td>サムネイル</td>
+        </table>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        'use strict';
+        //ボタンをクリックしたら
+        $("#send").on("click",function(){
+        const url = "https://www.googleapis.com/books/v1/volumes?q="+ $("#key").val();
+        $.ajax({
+          url: url,
+          datatype: "json"
+        }).done(function(data) {
+            //書籍名、概要、サムネイル[リンク]
+          console.log(data);//オブジェクトの中を確認
+          const len = data.items.length;//データの数を取得
+          let html;//変数用意
+          for(let i=0;i<len;i++){
+           html += `
+          <tr>
+            <td>${data.items[i].volumeInfo.title}</td>
+            <td>${data.items[i].volumeInfo.publisher}</td>
+            <td>${data.items[i].volumeInfo.authors}</td>
+            <td>${data.items[i].volumeInfo.description}</td>
+            
+            <td>
+                <a target="_blank" href="${data.items[i].volumeInfo.infoLink}">
+                <img src="${data.items[i].volumeInfo.imageLinks.thumbnail}">
+                </a>
+                </td>
+            
+            </tr>
+          `;
+        }
+        //table要素のidリストに追加
+        $("#list").empty().append(html).fadeIn(1000);
+        }); 
+    });
+    </script>
+</body>
+</html>

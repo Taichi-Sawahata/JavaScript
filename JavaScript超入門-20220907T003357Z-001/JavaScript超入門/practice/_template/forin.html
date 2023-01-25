@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>テンプレート</title>
+<link href="../../_common/images/favicon.ico" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="container">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+
+</section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript Samples</p>
+</div><!-- /.container -->
+</footer>
+
+</div>
+<script>
+ 'use strict';
+document.write('<h3>九九の表</h3>');
+document.write('<table>');
+
+for(let x = 1; x < 10; x++){
+    document.write('<tr>');
+
+  for(let y = 1; y < 10; y++){
+    document.write('<td>', x * y, '</td>');
+  }   
+  document.write('</tr>');   
+}
+document.write('</table>');
+
+</script>
+</body>
+</html>
+
+

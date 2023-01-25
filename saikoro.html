@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実験用</title>
+    <script>
+        function saikoro(){
+            let saikoro = Math.floor(Math.random() * 6)+1;//ランダムで1〜6の数字を作ります
+            document.getElementById('kekka').innerHTML = saikoro;//結果をid='kekka'に表示します
+            document.getElementById('saimg').src = saikoro + '.jpg';//画像をid='sainome'に表示します
+        }
+
+    </script>
+</head>
+<body>
+   <p><img src="1.jpg" id="saimg" width="50" height="50"></p>
+   <p><button onclick="saikoro();">サイコロを降ってね</button></p>
+   <p id="kekka"></p>
+ 
+
+    
+</body>
+</html>

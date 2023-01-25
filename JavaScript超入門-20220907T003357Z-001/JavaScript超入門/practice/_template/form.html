@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>テンプレート</title>
+<link href="../../_common/images/favicon.ico" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="container">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+    <h1>2つの数の合計を求める</h1>
+<form action="#" id="form">
+    <input type="text" name="num1" id="num1">
+    <input type="text" name="num2" id="num2">
+    <input type="button" id="keisan" value="合計は">
+    <input type="text" name="goukei" id="goukei">
+</form>
+<p id="output"></p>
+</section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript Samples</p>
+</div><!-- /.container -->
+</footer>
+
+</div>
+<script>
+ 'use strict';
+
+document.getElementById('keisan').onclick = function(){
+   // window.alert('合計');
+    let num1 = parseInt(document.getElementById('num1').value);
+    let num2 = parseInt(document.getElementById('num2').value);
+    let goukei = Number(num1) + Number(num2);
+    document.getElementById('goukei').value = goukei;
+    
+    
+    
+}
+
+</script>
+</body>
+</html>
+
+

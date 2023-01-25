@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>テンプレート</title>
+<link href="../../_common/images/favicon.ico" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="container">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+<input type="check" id="check">
+</form>
+<p id="output"></p>
+</section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript Samples</p>
+</div><!-- /.container -->
+</footer>
+
+</div>
+<script>
+ 'use strict';
+window.onload = function(){
+    document.getElementById('form').onsubmit = function(event){
+        let email1 = document.getElementById('email1').value;
+        let email2 = document.getElementById('email2').value;
+        let come = document.getElementById('come');
+        event.preventDefault();
+    if(email1 === email2){
+        come.textContent = '確認しました';
+    }else{
+        come.textContent = '失敗しました';
+    }
+    }
+}
+
+</script>
+</body>
+</html>
+
+

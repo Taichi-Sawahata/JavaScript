@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+html{
+    font-size: 100%;
+}
+
+.wrapper{
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1{
+    margin-bottom: 30px;
+}
+
+
+table{
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 800px;
+}
+th,td{
+   
+   border: 1px solid #333;
+}
+
+thead th {
+    background-color: orangered;
+    font-size: 1.25rem;
+}
+td {
+    height:30px;
+}
+
+#tr1 td{
+    font-size: 0.5rem;
+}
+
+.btn {
+    margin-top: 50px;
+}
+
+.hidden {
+    display: none;
+   
+}
+.hidden_pin{
+    display: none;
+}
+
+#hyouji{
+font-weight: bold;
+background-color: aqua;}
+
+#over{
+    font-weight: bold;
+background-color:red;
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>テンプレート</title>
+<link href="../../_common/images/favicon.ico" rel="shortcut icon">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500" rel="stylesheet">
+<link href="../../_common/css/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="container">
+<h1>タイトル</h1>
+<h2>サブタイトル</h2>
+</div><!-- /.container -->
+</header>
+<main>
+<div class="container">
+<section>
+    <h1>楽天トラベルの真似</h1>
+    <p>チェックイン　<input type="date" value="" id="checkin"></p>
+    <select id="rest">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">0</option>
+        <option value="11">1</option>
+        <option value="12">2</option>
+        <option value="13">3</option>
+        <option value="14">4</option>
+        <option value="15">5</option>
+        <option value="16">6</option>
+        <option value="17">7</option>
+        <option value="18">8</option>
+        <option value="19">9</option>
+     </select>
+     <p>チェックアウト<input type="date" value="" id="checkout"></p>
+   </section>
+</div><!-- /.container -->
+</main>
+<footer>
+<div class="container">
+<p>JavaScript Samples</p>
+</div><!-- /.container -->
+</footer>
+
+</div>
+<script>
+ 'use strict';
+ window.onload = function(){
+function next_cal(h_value){
+   // let change_day = document.getElementById('checkin').value;
+ 
+    let array_change_day = h_value.split('-');
+    let next_day = new Date(
+        array_change_day[0],
+        Number(array_change_day[1])-1,
+        Number(array_change_day[2])+1
+    );
+ today.setDate(today.getDate() + 24);
+
+   // 年月日の取り出し
+   let year = next_day.getFullYear();
+   let month = next_day.getMonth() + 1;
+  
+   if(month < 10){
+    month = '0' + month;
+   }
+
+   let date = next_day.getDate();
+   if(date < 10){
+    date = '0' + date;
+   }
+   
+
+//チェックアウト日(yyyy-mm-dd)をリターン
+   let out_date = year + '-' +  month + '-' + date;
+   return out_date;
+ //  document.getElementById('checkout').value = out_date;
+} 
+   //チェックイン日が変更されたらチェックアウト日も変更
+document.getElementById('checkin').onchange = function () {
+    //翌日計算の関数を呼び出して、戻り値をチェックアウト日にセット
+    let checkin_value = document.getElementById('checkin').value;
+    document.getElementById('checkout').value = next_cal(checkin_value);
+   }
+   
+}
+</script>
+</body>
+</html>
+
+

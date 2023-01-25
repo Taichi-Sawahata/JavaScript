@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電卓</title>
+    <style>
+       #wrapper {
+            max-width: 350px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        #header {
+            padding: 1rem;
+            font-size: 24px;
+        }
+
+        #header,#calc {
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 75%;
+            height: 3.5rem;
+        }
+
+        button {
+            width: 23%;
+            height: 3.5rem;
+            border-color: #fff;
+            font-size: 18px;
+        }
+    
+    </style>
+    <script>
+        let result = '';
+        let is_calc =false;
+
+        window.onload = function(){
+            result = document.getElementById('result');
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1 id="header">電卓</h1>
+        <div id="calc">
+            <div>
+                <input type="text" readonly id="result" value="0">
+                <button onclick="c_click">C</button>
+            </div>
+            <div class="center">
+                <button onclick="num_click(this.innerHTML)" id="num" value="7">7</button>
+                <button onclick="num_click(this.innerHTML)" id="num" value="8">8</button>
+                <button onclick="num_click(this.innerHTML)" id="num" value="9">9</button>
+                <button onclick="ope_click(this.innerHTML)" id="÷" value="">÷</button>
+            </div> 
+                <div class="center">
+                    <button onclick="num_click(this.innerHTML)" id="num" value="4">4</button>
+                    <button onclick="num_click(this.innerHTML)" id="num" value="5">5</button>
+                    <button onclick="num_click(this.innerHTML)" id="num" value="6">6</button>
+                    <button onclick="ope_click(this.innerHTML)" id="×" value="">×</button>
+                </div>
+                <div class="center">
+                    <button onclick="num_click(this.innerHTML)" id="num" value="1">1</button>
+                    <button onclick="num_click(this.innerHTML)" id="num" value="2">2</button>
+                    <button onclick="num_click(this.innerHTML)" id="num" value="3">3</button>
+                    <button onclick="ope_click(this.innerHTML)" id="-" value="">-</button>
+                </div>
+                <div class="center">
+                     <button onclick="num_click(this.innerHTML)" id="num" value="0">0</button>
+                     <button onclick="num_click(this.innerHTML)" id="." value="">.</button>
+                     <button onclick="equ_click()" id="=" value="">=</button>
+                     <button onclick="ope_click(this.innerHTML)" id="+" value="">+</button>
+
+                </div>
+        </div>
+    </div>
+    <script>
+        'use strict';
+        let answer = '';
+        let kekka = false;
+
+        function num_click(){
+            let num = document.getElementById('num');
+            document.getElementById('result').textContent = num.value;
+
+        }
+
+
+    </script>
+</body>
+</html>
